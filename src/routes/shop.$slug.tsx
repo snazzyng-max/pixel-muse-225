@@ -1,9 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
-import { toast } from "sonner";
 import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatPrice, getProduct, packLabel } from "@/lib/products";
+import { addToCart, openCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/shop/$slug")({
   loader: ({ params }) => {
@@ -68,7 +68,29 @@ function ProductPage() {
           <span className="text-muted-foreground">Total {formatPrice(product.price * packs)}</span>
         </div>
 
-        <Button variant="cta" size="lg" className="mt-8 w-full" onClick={() => toast.success("Checkout is coming soon", { description: `${packs} × ${product.name} (${c.name})` })}>Add to cart</Button>
+        <Button
+          variant="cta"
+          size="lg"
+          className="mt-8 w-full"
+          onClick={() => {
+            addToCart(
+              {
+                key: `${product.slug}::${c.name}`,
+                slug: product.slug,
+                name: product.name,
+                color: c.name,
+                swatch: c.swatch,
+                image: c.image,
+                price: product.price,
+                pack: packLabel(product),
+              },
+              packs,
+            );
+            openCart();
+          }}
+        >
+          Add to cart
+        </Button>
 
         <div className="mt-8 rounded-xl bg-card p-4">
           <p className="text-sm font-semibold uppercase tracking-wider">Best rigs</p>
