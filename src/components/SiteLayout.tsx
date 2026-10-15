@@ -29,8 +29,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 bg-primary text-primary-foreground">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Walker Baits logo" className="h-10 w-10 rounded-full ring-1 ring-primary-foreground/15" />
-            <span className="font-display text-2xl uppercase tracking-wider">Walker <span className="text-accent">Baits</span></span>
+            <img src={logoAsset.url} alt="Walker Baits logo" className="h-11 w-auto" />
+            <span className="font-display text-2xl uppercase tracking-wider text-accent">Walker Baits</span>
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
             {nav.map((n) => (
@@ -53,9 +53,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <footer className="bg-primary text-primary-foreground">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 md:grid-cols-3">
           <div>
-            <span className="flex items-center gap-3 font-display text-xl uppercase tracking-wider">
-              <img src={logoAsset.url} alt="Walker Baits logo" className="h-11 w-11 rounded-full ring-1 ring-primary-foreground/15" />
-              Walker <span className="text-accent">Baits</span>
+            <span className="flex items-center gap-3 font-display text-xl uppercase tracking-wider text-accent">
+              <img src={logoAsset.url} alt="Walker Baits logo" className="h-12 w-auto" />
+              Walker Baits
             </span>
             <p className="mt-2 text-sm opacity-75">Cast with Faith. Fish with Purpose.</p>
             <p className="mt-1 text-sm opacity-60">Matthew 4:19</p>
