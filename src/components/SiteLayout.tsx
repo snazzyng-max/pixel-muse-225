@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Menu, X } from "lucide-react";
+import { Facebook, Instagram, Menu, ShoppingBag, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import logoAsset from "@/assets/logo.png.asset.json";
+import { cartCount, openCart, useCartItems } from "@/lib/cart";
 
 export const INSTAGRAM = "https://www.instagram.com/walker_baits1711";
 export const FACEBOOK = "https://www.facebook.com/";
@@ -22,6 +23,21 @@ function Socials() {
   );
 }
 
+function CartButton() {
+  const items = useCartItems();
+  const count = cartCount(items);
+  return (
+    <button onClick={openCart} aria-label={`Cart, ${count} item${count === 1 ? "" : "s"}`} className="relative p-1 hover:text-accent">
+      <ShoppingBag className="h-5 w-5" />
+      {count > 0 && (
+        <span className="absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-accent-foreground">
+          {count}
+        </span>
+      )}
+    </button>
+  );
+}
+
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
@@ -36,9 +52,13 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             {nav.map((n) => (
               <Link key={n.to} to={n.to} className="text-sm font-semibold uppercase tracking-wider opacity-85 hover:opacity-100" activeProps={{ className: "text-accent opacity-100" }}>{n.label}</Link>
             ))}
+            <CartButton />
             <Socials />
           </nav>
-          <button className="md:hidden" aria-label="Menu" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+          <div className="flex items-center gap-3 md:hidden">
+            <CartButton />
+            <button className="md:hidden" aria-label="Menu" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+          </div>
         </div>
         {open && (
           <nav className="flex flex-col gap-4 border-t border-primary-foreground/15 px-4 py-5 md:hidden">
