@@ -51,6 +51,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           <div>
             <p className="font-display text-xl uppercase tracking-wider">Walker <span className="text-accent">Baits</span></p>
             <p className="mt-2 text-sm opacity-75">Cast with Faith. Fish with Purpose.</p>
+            <p className="mt-1 text-sm opacity-60">Matthew 4:19</p>
           </div>
           <div className="flex flex-col gap-2 text-sm">
             {nav.map((n) => <Link key={n.to} to={n.to} className="opacity-80 hover:opacity-100">{n.label}</Link>)}
