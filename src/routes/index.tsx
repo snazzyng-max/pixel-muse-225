@@ -27,6 +27,7 @@ function Index() {
         <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 md:pb-24">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-accent">Handcrafted baits made with purpose</p>
           <h1 className="max-w-3xl text-5xl leading-[0.95] md:text-7xl">Cast with Faith.<br />Fish with Purpose.</h1>
+          <p className="mt-3 text-sm font-semibold uppercase tracking-[0.3em] opacity-80">Matthew 4:19</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild variant="cta" size="lg"><Link to="/shop">Shop All Baits</Link></Button>
             <Button asChild variant="heroOutline" size="lg"><Link to="/shop" hash="pricing">See Pricing</Link></Button>
