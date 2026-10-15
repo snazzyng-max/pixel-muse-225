@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 export const INSTAGRAM = "https://www.instagram.com/walker_baits1711";
 export const FACEBOOK = "https://www.facebook.com/";
@@ -27,7 +28,10 @@ export function SiteLayout({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-40 bg-primary text-primary-foreground">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-          <Link to="/" className="font-display text-2xl uppercase tracking-wider">Walker <span className="text-accent">Baits</span></Link>
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logoAsset.url} alt="Walker Baits logo" className="h-10 w-10 rounded-full ring-1 ring-primary-foreground/15" />
+            <span className="font-display text-2xl uppercase tracking-wider">Walker <span className="text-accent">Baits</span></span>
+          </Link>
           <nav className="hidden items-center gap-7 md:flex">
             {nav.map((n) => (
               <Link key={n.to} to={n.to} className="text-sm font-semibold uppercase tracking-wider opacity-85 hover:opacity-100" activeProps={{ className: "text-accent opacity-100" }}>{n.label}</Link>
@@ -49,7 +53,10 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <footer className="bg-primary text-primary-foreground">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 md:grid-cols-3">
           <div>
-            <p className="font-display text-xl uppercase tracking-wider">Walker <span className="text-accent">Baits</span></p>
+            <span className="flex items-center gap-3 font-display text-xl uppercase tracking-wider">
+              <img src={logoAsset.url} alt="Walker Baits logo" className="h-11 w-11 rounded-full ring-1 ring-primary-foreground/15" />
+              Walker <span className="text-accent">Baits</span>
+            </span>
             <p className="mt-2 text-sm opacity-75">Cast with Faith. Fish with Purpose.</p>
             <p className="mt-1 text-sm opacity-60">Matthew 4:19</p>
           </div>
