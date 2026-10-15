@@ -30,7 +30,7 @@ function ProductPage() {
   const { product } = Route.useLoaderData();
   const [color, setColor] = useState(0);
   const [packs, setPacks] = useState(1);
-  const c = product.colors[color];
+  const c = product.colors[color]!;
   return (
     <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 md:grid-cols-2">
       <div>

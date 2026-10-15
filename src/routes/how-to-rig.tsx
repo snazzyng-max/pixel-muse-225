@@ -48,7 +48,7 @@ function Rig() {
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p) => (
           <div key={p.slug} className="flex gap-4 rounded-xl bg-card p-3">
-            <img src={p.colors[0].image} alt={p.name} loading="lazy" className="h-16 w-16 rounded-lg object-cover" />
+            <img src={p.colors[0]!.image} alt={p.name} loading="lazy" className="h-16 w-16 rounded-lg object-cover" />
             <div>
               <h3 className="text-lg">{p.name}</h3>
               <p className="text-sm text-muted-foreground">{p.rigs.join(" · ")}</p>

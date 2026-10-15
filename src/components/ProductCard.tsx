@@ -5,7 +5,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <Link to="/shop/$slug" params={{ slug: product.slug }} className="group overflow-hidden rounded-xl bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <div className="aspect-square overflow-hidden bg-muted">
-        <img src={product.colors[0].image} alt={product.name} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <img src={product.colors[0]!.image} alt={product.name} loading="lazy" width={816} height={816} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
       </div>
       <div className="p-4">
         <h3 className="text-lg">{product.name}</h3>
