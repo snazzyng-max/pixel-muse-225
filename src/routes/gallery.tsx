@@ -1,10 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Fish } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { products } from "@/lib/products";
+import bass1 from "@/assets/catches/catch-bass-1.jpg.asset.json";
+import bass2 from "@/assets/catches/catch-bass-2.jpg.asset.json";
+import crappieWhite from "@/assets/catches/catch-crappie-white.jpg.asset.json";
+import crappieCraw from "@/assets/catches/catch-crappie-craw.jpg.asset.json";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -18,12 +21,11 @@ export const Route = createFileRoute("/gallery")({
   component: Gallery,
 });
 
-// Placeholder tiles until the real catch photos are added.
 const catches = [
-  { angler: "Catch #1", bait: "Wacky Worms" },
-  { angler: "Catch #2", bait: "Paddle Tail" },
-  { angler: "Catch #3", bait: "Tubes" },
-  { angler: "Catch #4", bait: "Craws" },
+  { img: bass1.url, fish: "Largemouth Bass", note: "Shoreline catch" },
+  { img: crappieWhite.url, fish: "Crappie", note: "On a white bait" },
+  { img: crappieCraw.url, fish: "Crappie", note: "On a craw bait" },
+  { img: bass2.url, fish: "Largemouth Bass", note: "Weed-line catch" },
 ];
 
 function Gallery() {
@@ -33,9 +35,11 @@ function Gallery() {
       <p className="mt-2 text-muted-foreground">Real fish. Real anglers. Caught on Walker Baits.</p>
       <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
         {catches.map((c) => (
-          <figure key={c.angler} className="overflow-hidden rounded-xl bg-card">
-            <div className="flex aspect-[4/5] items-center justify-center bg-secondary text-secondary-foreground/60"><Fish className="h-12 w-12" /></div>
-            <figcaption className="p-3 text-sm"><span className="font-semibold">{c.angler}</span> · <span className="text-muted-foreground">{c.bait}</span></figcaption>
+          <figure key={c.img} className="overflow-hidden rounded-xl bg-card">
+            <div className="aspect-[3/4] overflow-hidden">
+              <img src={c.img} alt={`${c.fish} caught on Walker Baits`} className="h-full w-full object-cover" />
+            </div>
+            <figcaption className="p-3 text-sm"><span className="font-semibold">{c.fish}</span> · <span className="text-muted-foreground">{c.note}</span></figcaption>
           </figure>
         ))}
       </div>
