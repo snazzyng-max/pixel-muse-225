@@ -8,6 +8,7 @@
 - New logo (blue brush splash) in header/footer + tab icon; site text matches its blue
 
 ## Open
+- Visual redesign: sharper homepage, shop, navigation, and consistent page styling
 - Cart: drawer showing everything added, quantities, subtotal
 - Real color names to replace the guessed ones (e.g. "Cinnamon Sparkle", "Electric Blue")
 - Catch gallery captions: real angler names + bait used for each of the 4 photos

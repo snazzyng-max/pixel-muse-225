@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Shared site presentation uses semantic tokens and global layout utilities in src/styles.css so storefront pages stay visually consistent.
+- Keep the site on existing TanStack routes; reusable product cards and the shared layout own storefront navigation and cart entry points.
