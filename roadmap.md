@@ -9,6 +9,7 @@
 
 - Visual redesign: bold lake imagery, larger typography, polished bait cards, cleaner navigation, consistent black-and-blue pages
 - Cart: verified adding, quantity changes, subtotal, removal, and empty-state navigation
+- Checkout: direct Venmo payment link for Walker_Baits (no automatic order confirmation)
 
 ## Open
 - Real color names to replace the guessed ones (e.g. "Cinnamon Sparkle", "Electric Blue")
@@ -16,4 +17,3 @@
 - Business email to connect the contact + catch forms
 - Real Facebook page link
 - Verify bait descriptions and "best rigs" wording
-- Live checkout — needs a Shopify store decision

@@ -11,3 +11,4 @@
 
 - Shared site presentation uses semantic tokens and global layout utilities in src/styles.css so storefront pages stay visually consistent.
 - Keep the site on existing TanStack routes; reusable product cards and the shared layout own storefront navigation and cart entry points.
+- External checkout uses a shared destination constant and never clears the cart or claims payment confirmation because an outbound link cannot verify payment.
