@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
+import { ArrowUpRight, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ import {
   useCartOpen,
 } from "@/lib/cart";
 import { formatPrice } from "@/lib/products";
+import { CHECKOUT_URL } from "@/lib/checkout";
 
 export function CartDrawer() {
   const open = useCartOpen();
@@ -115,21 +116,19 @@ export function CartDrawer() {
             <span className="font-semibold text-accent">{formatPrice(subtotal)}</span>
           </div>
           <p className="mt-1 text-xs text-muted-foreground">
-            Shipping and taxes are added at checkout. Checkout is coming soon.
+            Pay Walker Baits directly on Venmo. Payment does not automatically submit an order.
           </p>
-          <Button
-            variant="cta"
-            size="lg"
-            className="mt-4 w-full"
-            disabled={items.length === 0}
-            onClick={() =>
-              toast.success("Checkout is coming soon", {
-                description: `${count} item${count === 1 ? "" : "s"} · ${formatPrice(subtotal)}`,
-              })
-            }
-          >
-            Checkout
-          </Button>
+          {items.length > 0 ? (
+            <Button asChild variant="cta" size="lg" className="mt-4 w-full">
+              <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+                Checkout with Venmo <ArrowUpRight />
+              </a>
+            </Button>
+          ) : (
+            <Button variant="cta" size="lg" className="mt-4 w-full" disabled>
+              Checkout with Venmo <ArrowUpRight />
+            </Button>
+          )}
           <div className="mt-3 flex items-center justify-between text-sm">
             <button onClick={closeCart} className="font-semibold hover:text-accent">
               Keep shopping
