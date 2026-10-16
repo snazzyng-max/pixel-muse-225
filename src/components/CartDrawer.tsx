@@ -39,7 +39,7 @@ export function CartDrawer() {
   return (
     <div className={open ? "fixed inset-0 z-50" : "pointer-events-none fixed inset-0 z-50"} aria-hidden={!open}>
       <div
-        className={`absolute inset-0 bg-black/70 transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0"}`}
+        className={`absolute inset-0 bg-scrim transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0"}`}
         onClick={closeCart}
       />
       <aside
@@ -62,7 +62,7 @@ export function CartDrawer() {
             <ShoppingBag className="h-10 w-10 text-muted-foreground" />
             <p className="text-lg">Your cart is empty</p>
             <p className="text-sm text-muted-foreground">Add a bait or two and they'll show up here.</p>
-            <Button variant="cta" className="mt-2" onClick={closeCart}>
+            <Button asChild variant="cta" className="mt-2" onClick={closeCart}>
               <Link to="/shop">Browse baits</Link>
             </Button>
           </div>

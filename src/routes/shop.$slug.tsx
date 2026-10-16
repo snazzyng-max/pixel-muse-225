@@ -16,6 +16,8 @@ export const Route = createFileRoute("/shop/$slug")({
     const d = loaderData?.product.description ?? "Handcrafted soft plastic bait.";
     return {
       meta: [
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
         { title: `${name} — Walker Baits` },
         { name: "description", content: d },
         { property: "og:title", content: `${name} — Walker Baits` },
@@ -30,11 +32,12 @@ function ProductPage() {
   const { product } = Route.useLoaderData();
   const [color, setColor] = useState(0);
   const [packs, setPacks] = useState(1);
-  const c = product.colors[color]!;
+  const c = product.colors[color] ?? product.colors[0];
+  if (!c) return null;
   return (
     <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 md:grid-cols-2">
       <div>
-        <div className="aspect-square overflow-hidden rounded-xl bg-muted">
+        <div className="aspect-square overflow-hidden rounded-md bg-muted">
           <img key={c.image} src={c.image} alt={`${product.name} in ${c.name}`} width={816} height={816} className="h-full w-full object-cover animate-in fade-in" />
         </div>
         <div className="mt-3 grid grid-cols-4 gap-2">
@@ -92,7 +95,7 @@ function ProductPage() {
           Add to cart
         </Button>
 
-        <div className="mt-8 rounded-xl bg-card p-4">
+        <div className="mt-8 border-t border-border py-6">
           <p className="text-sm font-semibold uppercase tracking-wider">Best rigs</p>
           <p className="mt-1 text-muted-foreground">{product.rigs.join(" · ")}</p>
           <Link to="/how-to-rig" className="mt-2 inline-block text-sm font-semibold text-accent">How to rig it →</Link>

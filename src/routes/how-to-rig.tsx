@@ -5,6 +5,8 @@ import { products } from "@/lib/products";
 export const Route = createFileRoute("/how-to-rig")({
   head: () => ({
     meta: [
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       { title: "How to Rig Soft Plastics — Walker Baits" },
       { name: "description", content: "Step-by-step guides for Texas, wacky, drop shot and more with Walker Baits lures." },
       { property: "og:title", content: "How to Rig — Walker Baits" },
@@ -28,7 +30,7 @@ function Rig() {
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {guides.map((g) => (
-          <article key={g.name} className="overflow-hidden rounded-xl bg-card">
+          <article key={g.name} className="overflow-hidden rounded-md bg-card">
             <div className="flex aspect-video items-center justify-center bg-primary text-primary-foreground/70">
               <PlayCircle className="h-12 w-12" />
             </div>
@@ -47,8 +49,8 @@ function Rig() {
       <h2 className="mt-16 text-3xl">By bait</h2>
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p) => (
-          <div key={p.slug} className="flex gap-4 rounded-xl bg-card p-3">
-            <img src={p.colors[0]!.image} alt={p.name} loading="lazy" className="h-16 w-16 rounded-lg object-cover" />
+          <div key={p.slug} className="flex gap-4 rounded-md bg-card p-3">
+            <img src={p.colors[0]?.image} alt={p.name} loading="lazy" className="h-16 w-16 rounded-lg object-cover" />
             <div>
               <h3 className="text-lg">{p.name}</h3>
               <p className="text-sm text-muted-foreground">{p.rigs.join(" · ")}</p>

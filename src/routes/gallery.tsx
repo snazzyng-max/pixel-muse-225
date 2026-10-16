@@ -12,6 +12,8 @@ import crappieCraw from "@/assets/catches/catch-crappie-craw.jpg.asset.json";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       { title: "Catch Gallery — Walker Baits" },
       { name: "description", content: "Real bass and crappie caught on Walker Baits. Share your catch to be featured." },
       { property: "og:title", content: "Catch Gallery — Walker Baits" },

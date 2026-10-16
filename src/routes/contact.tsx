@@ -10,6 +10,8 @@ import { FACEBOOK, INSTAGRAM } from "@/components/SiteLayout";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       { title: "Contact — Walker Baits" },
       { name: "description", content: "Questions or custom color requests? Get in touch with Walker Baits." },
       { property: "og:title", content: "Contact Walker Baits" },
