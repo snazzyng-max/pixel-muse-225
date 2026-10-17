@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
+import { ArrowUpRight, Copy, Instagram, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,17 @@ import {
   useCartOpen,
 } from "@/lib/cart";
 import { formatPrice } from "@/lib/products";
-import { CHECKOUT_URL, PAYPAL_URL } from "@/lib/checkout";
+import { CHECKOUT_URL, INSTAGRAM_DM_URL, orderSummary, PAYPAL_URL } from "@/lib/checkout";
+
+function copySummary(items: ReturnType<typeof useCartItems>) {
+  const text = orderSummary(items);
+  const done = () => toast("Order summary copied — paste it into your payment note");
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(done, () => toast("Couldn't copy — long-press the summary to copy it"));
+  } else {
+    toast("Couldn't copy — long-press the summary to copy it");
+  }
+}
 
 export function CartDrawer() {
   const open = useCartOpen();
