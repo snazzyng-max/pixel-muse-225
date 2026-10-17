@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
+import { ArrowUpRight, Copy, Instagram, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,17 @@ import {
   useCartOpen,
 } from "@/lib/cart";
 import { formatPrice } from "@/lib/products";
-import { CHECKOUT_URL, PAYPAL_URL } from "@/lib/checkout";
+import { CHECKOUT_URL, INSTAGRAM_DM_URL, orderSummary, PAYPAL_URL } from "@/lib/checkout";
+
+function copySummary(items: ReturnType<typeof useCartItems>) {
+  const text = orderSummary(items);
+  const done = () => toast("Order summary copied — paste it into your payment note");
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(done, () => toast("Couldn't copy — long-press the summary to copy it"));
+  } else {
+    toast("Couldn't copy — long-press the summary to copy it");
+  }
+}
 
 export function CartDrawer() {
   const open = useCartOpen();
@@ -118,6 +128,36 @@ export function CartDrawer() {
           <p className="mt-1 text-xs text-muted-foreground">
             Pay Walker Baits directly on Venmo or PayPal. Payment does not automatically submit an order.
           </p>
+          {items.length > 0 && (
+            <div className="mt-3 rounded-md border border-border bg-background p-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Order summary
+                </span>
+                <button
+                  onClick={() => copySummary(items)}
+                  className="flex items-center gap-1 text-xs font-semibold text-accent hover:underline"
+                >
+                  <Copy className="h-3.5 w-3.5" /> Copy
+                </button>
+              </div>
+              <pre className="mt-2 whitespace-pre-wrap font-sans text-xs leading-relaxed text-muted-foreground">
+                {orderSummary(items)}
+              </pre>
+              <p className="mt-2 text-xs text-muted-foreground">
+                Copy this and paste it into your Venmo or PayPal payment note, then send it to{" "}
+                <a
+                  href={INSTAGRAM_DM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-accent hover:underline"
+                >
+                  <Instagram className="inline h-3 w-3" /> @walker_baits1711
+                </a>{" "}
+                so he knows what you ordered.
+              </p>
+            </div>
+          )}
           <div className="mt-4 flex flex-col gap-2">
             {items.length > 0 ? (
               <Button asChild variant="cta" size="lg" className="w-full">
