@@ -116,19 +116,32 @@ export function CartDrawer() {
             <span className="font-semibold text-accent">{formatPrice(subtotal)}</span>
           </div>
           <p className="mt-1 text-xs text-muted-foreground">
-            Pay Walker Baits directly on Venmo. Payment does not automatically submit an order.
+            Pay Walker Baits directly on Venmo or PayPal. Payment does not automatically submit an order.
           </p>
-          {items.length > 0 ? (
-            <Button asChild variant="cta" size="lg" className="mt-4 w-full">
-              <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+          <div className="mt-4 flex flex-col gap-2">
+            {items.length > 0 ? (
+              <Button asChild variant="cta" size="lg" className="w-full">
+                <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+                  Checkout with Venmo <ArrowUpRight />
+                </a>
+              </Button>
+            ) : (
+              <Button variant="cta" size="lg" className="w-full" disabled>
                 Checkout with Venmo <ArrowUpRight />
-              </a>
-            </Button>
-          ) : (
-            <Button variant="cta" size="lg" className="mt-4 w-full" disabled>
-              Checkout with Venmo <ArrowUpRight />
-            </Button>
-          )}
+              </Button>
+            )}
+            {items.length > 0 ? (
+              <Button asChild variant="heroOutline" size="lg" className="w-full">
+                <a href={PAYPAL_URL} target="_blank" rel="noopener noreferrer">
+                  Checkout with PayPal <ArrowUpRight />
+                </a>
+              </Button>
+            ) : (
+              <Button variant="heroOutline" size="lg" className="w-full" disabled>
+                Checkout with PayPal <ArrowUpRight />
+              </Button>
+            )}
+          </div>
           <div className="mt-3 flex items-center justify-between text-sm">
             <button onClick={closeCart} className="font-semibold hover:text-accent">
               Keep shopping
