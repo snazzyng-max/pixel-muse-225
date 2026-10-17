@@ -14,7 +14,7 @@ import {
   useCartOpen,
 } from "@/lib/cart";
 import { formatPrice } from "@/lib/products";
-import { CHECKOUT_URL } from "@/lib/checkout";
+import { CHECKOUT_URL, PAYPAL_URL } from "@/lib/checkout";
 
 export function CartDrawer() {
   const open = useCartOpen();
