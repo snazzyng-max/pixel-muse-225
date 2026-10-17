@@ -9,7 +9,7 @@
 
 - Visual redesign: bold lake imagery, larger typography, polished bait cards, cleaner navigation, consistent black-and-blue pages
 - Cart: verified adding, quantity changes, subtotal, removal, and empty-state navigation
-- Checkout: direct Venmo payment link for Walker_Baits (no automatic order confirmation)
+- Checkout: direct Venmo (Walker_Baits) and PayPal (walkerbaits) payment links (no automatic order confirmation)
 
 ## Open
 - Real color names to replace the guessed ones (e.g. "Cinnamon Sparkle", "Electric Blue")
